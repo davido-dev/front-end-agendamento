@@ -1,0 +1,12 @@
+.btn-confirm {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #218838;
+  border-radius: 4px;
+}
+
+.btn-confirm:hover {
+  background-color: #218838;
+}

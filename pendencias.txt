@@ -1,0 +1,4 @@
+Página cadastro:
+
+- Redirecionar para login
+- Máscaras dos inputs

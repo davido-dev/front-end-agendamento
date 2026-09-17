@@ -2,7 +2,7 @@ const form = document.querySelector('form')
 const cpfInput = document.querySelector('#cpf')
 const telefone = document.querySelector('#telefone')
 
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit',async function(event) {
     event.preventDefault();
 
     const nome = document.querySelector('#nome').value
@@ -23,6 +23,26 @@ form.addEventListener('submit', function(event) {
       email: email,
       senha: senha,
       telefone: telefone
+    }
+
+    try {
+      const resposta = await fetch('http://localhost:3000/api/usuarios', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(usuario)
+      })
+
+      if (!resposta.ok) {
+        throw  new Error('Erro ao cadastrar usuário!')
+      }
+
+      alert('Usuário cadastrado com sucesso!')
+
+      window.location.href = 'login.html'
+    } catch (erro) {
+      alert('Erro ao cadastrar usuário')
     }
 
 })

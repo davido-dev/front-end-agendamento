@@ -23,11 +23,11 @@ form.addEventListener('submit', async function (event) {
     const dados = await resposta.json();
 
     if (!resposta.ok) {
-      alert(dados.erro || dados.mensagem);
+      alert(dados.erro);
       return;
     }
 
-    // localStorage.setItem('usuario', JSON.stringify(dados.usuario));
+    localStorage.setItem('usuario', JSON.stringify(dados.usuario))
 
     alert('Login realizado!');
   } catch (erro) {

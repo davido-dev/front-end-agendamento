@@ -1,0 +1,16 @@
+cliente:
+
+cadstro x
+login x
+perfil usuario x
+agendar serviços
+agenda (selecionando profissional e serviço para mostrar disponibilidade)
+
+
+
+
+admin :
+
+serviços x
+especialidades x
+profissionais 

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Administração de Serviços</title>
+    <link rel="stylesheet" href="assets/css/paginas/admin-servicos.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="index.html" class="logo">PetShow</a>
+
+      <nav class="nav">
+        <a href="index.html">Página Inicial</a>
+        <a href="login.html">Login</a>
+        <a href="cadastro.html">Cadastro</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="card-cadastro">
+        <h1>Cadastro de Serviço</h1>
+
+        <form class="form-cadastro">
+          <div class="campo">
+            <label for="nome">Nome</label>
+            <input
+              type="text"
+              id="nome"
+              maxlength="100"
+              placeholder="Digite o nome do serviço"
+              required
+            />
+          </div>
+
+          <div class="campo">
+            <label for="descricao">Descrição</label>
+            <textarea
+              id="descricao"
+              placeholder="Digite a descrição do serviço"
+              required
+            ></textarea>
+          </div>
+
+          <div class="campo">
+            <label for="duracao_minutos">Duração em minutos</label>
+            <input type="number" id="duracao_minutos" min="1" placeholder="Ex: 60" required />
+          </div>
+
+          <div class="campo">
+            <label for="valor">Valor</label>
+            <input type="number" id="valor" min="0" step="0.01" placeholder="Ex: 50.00" required />
+          </div>
+
+          <div class="campo">
+            <label for="status">Status</label>
+            <select id="status" required>
+              <option value="">Selecione o status</option>
+              <option value="ATIVO">Ativo</option>
+              <option value="INATIVO">Inativo</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-confirm">Cadastrar</button>
+        </form>
+      </section>
+
+      <section class="card-servicos">
+        <h1>Serviços Cadastrados</h1>
+
+        <div class="tabela-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Duração</th>
+                <th>Valor</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+
+            <tbody id="tabela-servicos"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div id="modal-edicao" class="modal">
+      <div class="modal-conteudo">
+        <h2>Editar Serviço</h2>
+
+        <form id="form-edicao">
+          <input type="hidden" id="editar-id" />
+
+          <div class="campo">
+            <label for="editar-nome">Nome</label>
+            <input type="text" id="editar-nome" maxlength="100" required />
+          </div>
+
+          <div class="campo">
+            <label for="editar-descricao">Descrição</label>
+            <textarea id="editar-descricao" required></textarea>
+          </div>
+
+          <div class="campo">
+            <label for="editar-duracao_minutos">Duração em minutos</label>
+            <input type="number" id="editar-duracao_minutos" min="1" required />
+          </div>
+
+          <div class="campo">
+            <label for="editar-valor">Valor</label>
+            <input type="number" id="editar-valor" min="0" step="0.01" required />
+          </div>
+
+          <div class="campo">
+            <label for="editar-status">Status</label>
+            <select id="editar-status" required>
+              <option value="ATIVO">Ativo</option>
+              <option value="INATIVO">Inativo</option>
+            </select>
+          </div>
+
+          <div class="modal-acoes">
+            <button type="submit" class="btn-confirm">Salvar</button>
+
+            <button type="button" class="btn-cancelar" id="btn-cancelar">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© 2026 PetShow - Sistema de Agendamento</p>
+    </footer>
+
+    <script type="module" src="./assets/js/paginas/admin-servicos.js"></script>
+  </body>
+</html>

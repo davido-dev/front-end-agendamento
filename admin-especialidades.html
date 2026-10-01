@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Administração de Especialidades</title>
+    <link rel="stylesheet" href="assets/css/paginas/admin-especialidades.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="index.html" class="logo">PetShow</a>
+
+      <nav class="nav">
+        <a href="index.html">Página Inicial</a>
+        <a href="login.html">Login</a>
+        <a href="cadastro.html">Cadastro</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="card-cadastro">
+        <h1>Cadastro de Especialidade</h1>
+
+        <form class="form-cadastro">
+          <div class="campo">
+            <label for="nome">Nome</label>
+
+            <input
+              type="text"
+              id="nome"
+              maxlength="100"
+              placeholder="Digite o nome da especialidade"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn-confirm">
+            Cadastrar
+          </button>
+        </form>
+      </section>
+
+      <section class="card-especialidades">
+        <h1>Especialidades Cadastradas</h1>
+
+        <div class="tabela-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+
+            <tbody id="tabela-especialidades">
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div id="modal-edicao" class="modal">
+      <div class="modal-conteudo">
+        <h2>Editar Especialidade</h2>
+
+        <form id="form-edicao">
+          <input type="hidden" id="editar-id" />
+
+          <div class="campo">
+            <label for="editar-nome">Nome</label>
+
+            <input
+              type="text"
+              id="editar-nome"
+              maxlength="100"
+              placeholder="Digite o nome da especialidade"
+              required
+            />
+          </div>
+
+          <div class="modal-acoes">
+            <button type="submit" class="btn-confirm">
+              Salvar
+            </button>
+
+            <button
+              type="button"
+              class="btn-cancelar"
+              id="btn-cancelar"
+            >
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© 2026 PetShow - Sistema de Agendamento</p>
+    </footer>
+
+    <script
+      type="module"
+      src="./assets/js/paginas/admin-especialidades.js"
+    ></script>
+  </body>
+</html>

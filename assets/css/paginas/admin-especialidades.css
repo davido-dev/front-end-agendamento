@@ -1,0 +1,141 @@
+@import url('../global/reset.css');
+@import url('../componentes/botoes.css');
+@import url('../componentes/cabecalho.css');
+@import url('../componentes/footer.css');
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 50px auto;
+}
+
+.card-cadastro,
+.card-especialidades {
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-cadastro {
+  padding: 0 200px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.tabela-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  background-color: #f5f5f5;
+}
+
+.btn-editar,
+.btn-excluir,
+.btn-cancelar {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.btn-editar,
+.btn-cancelar {
+  background-color: #f5f5f5;
+}
+
+.btn-excluir {
+  background-color: #f5f5f5;
+}
+
+.btn-editar:hover,
+.btn-excluir:hover,
+.btn-cancelar:hover {
+  opacity: 0.8;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-conteudo {
+  width: 100%;
+  max-width: 500px;
+  background-color: white;
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.modal-conteudo h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.modal-acoes button {
+  margin-right: 0;
+}

@@ -6,6 +6,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #f5f5f5;
+<<<<<<< HEAD
 }
 
 .container {
@@ -14,13 +15,43 @@ body {
   margin: 50px auto;
   background-color: white;
   padding: 20px;
+=======
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+
+  width: 100%;
+  max-width: 500px;
+
+  margin: 50px auto;
+
+  background-color: white;
+
+  padding: 30px;
+
+>>>>>>> 5cbecb0 (01-10-26)
   border: 1px solid #ccc;
   border-radius: 8px;
 }
 
+<<<<<<< HEAD
 h1 {
   text-align: center;
   margin-bottom: 20px;
+=======
+.card-perfil {
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+>>>>>>> 5cbecb0 (01-10-26)
   font-size: 24px;
 }
 
@@ -42,6 +73,7 @@ label {
 input {
   padding: 10px;
   border: 1px solid #ccc;
+<<<<<<< HEAD
 }
 
 input:disabled {
@@ -63,3 +95,24 @@ input:disabled {
   text-decoration: underline;
 }
 
+=======
+  border-radius: 4px;
+
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6a5acd;
+}
+
+input:disabled {
+  background-color: #efefef;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.btn-confirm {
+  margin-top: 10px;
+}
+>>>>>>> 5cbecb0 (01-10-26)

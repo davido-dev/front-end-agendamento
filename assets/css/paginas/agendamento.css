@@ -1,0 +1,253 @@
+@import url('../global/reset.css');
+@import url('../componentes/botoes.css');
+@import url('../componentes/cabecalho.css');
+@import url('../componentes/footer.css');
+
+/* Geral */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  margin: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Cartões */
+.card-agendamento,
+.card-calendario,
+.card-confirmacao {
+  padding: 25px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.card-agendamento h1,
+.card-calendario h2,
+.card-confirmacao h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #333;
+}
+
+.descricao {
+  margin-bottom: 22px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Formulário */
+#form-agendamento {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.campo label {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  background: #fff;
+  color: #333;
+  font: inherit;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.campo textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 3px rgb(0 123 255 / 25%);
+}
+
+.campo input:disabled,
+.campo select:disabled {
+  background: #eee;
+  color: #888;
+  cursor: not-allowed;
+}
+
+#data-agendamento:invalid {
+  border-color: #dc3545;
+}
+
+/* Data e horários */
+.calendario-cabecalho {
+  margin-bottom: 20px;
+}
+
+.calendario-cabecalho h2 {
+  margin-bottom: 8px;
+}
+
+.calendario-cabecalho .descricao {
+  margin-bottom: 0;
+}
+
+.area-horarios {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.area-horarios h3 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.mensagem-horarios {
+  margin-bottom: 15px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Tabela de horários */
+.tabela-horarios-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabela-horarios {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+.tabela-horarios th,
+.tabela-horarios td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.tabela-horarios th {
+  background: #f0f0f0;
+  font-weight: bold;
+}
+
+.tabela-horarios tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.tabela-horarios tbody tr:hover {
+  background: #f0f7ff;
+}
+
+.tabela-horarios td[colspan] {
+  padding: 20px;
+  color: #666;
+  text-align: center;
+}
+
+/* Botões de horário gerados pelo JavaScript */
+.horario {
+  padding: 8px 14px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  background: #fff;
+  color: #007bff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.horario:hover:not(:disabled) {
+  background: #eaf3ff;
+}
+
+.horario.selecionado {
+  background: #007bff;
+  color: #fff;
+}
+
+.horario:disabled {
+  border-color: #ccc;
+  background: #eee;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* Resumo */
+.resumo-agendamento {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.resumo-agendamento p {
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.resumo-agendamento strong {
+  color: #333;
+}
+
+/* Confirmação */
+.btn-confirm {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-confirm:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.btn-confirm:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+/* Acessibilidade */
+button:focus-visible,
+.horario:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Rodapé */
+.footer {
+  margin-top: 40px;
+}

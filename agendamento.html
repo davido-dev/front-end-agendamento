@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Agendamento - PetShow</title>
+
+    <link rel="stylesheet" href="assets/css/paginas/agendamento.css" />
+  </head>
+
+  <body>
+    <!-- Cabeçalho -->
+    <header class="header">
+      <a href="index.html" class="logo">PetShow</a>
+
+      <nav class="nav">
+        <a href="index.html">Página Inicial</a>
+        <a href="login.html">Login</a>
+        <a href="cadastro.html">Cadastro</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Seleção dos dados -->
+      <section class="card-agendamento">
+        <h1>Agendar Serviço</h1>
+
+        <p class="descricao">
+          Escolha seu pet, o serviço e o profissional para consultar os horários disponíveis.
+        </p>
+
+        <form id="form-agendamento">
+          <!-- 1. Pet -->
+          <div class="campo">
+            <label for="pet">Pet</label>
+
+            <select id="pet" name="id_pet" required>
+              <option value="">Selecione seu pet</option>
+            </select>
+          </div>
+
+          <!-- 2. Serviço -->
+          <div class="campo">
+            <label for="servico">Serviço</label>
+
+            <select id="servico" name="id_servico" required>
+              <option value="">Selecione o serviço</option>
+            </select>
+          </div>
+
+          <!-- 3. Profissional -->
+          <div class="campo">
+            <label for="profissional">Profissional</label>
+
+            <select id="profissional" name="id_profissional" required>
+              <option value="">Selecione o profissional</option>
+            </select>
+          </div>
+
+          <!-- Observações -->
+          <div class="campo">
+            <label for="observacoes">Observações (opcional)</label>
+
+            <textarea
+              id="observacoes"
+              name="observacoes"
+              rows="3"
+              placeholder="Informe alguma necessidade especial do seu pet..."
+            ></textarea>
+          </div>
+        </form>
+      </section>
+
+      <!-- Escolha da data e dos horários -->
+      <section class="card-calendario">
+        <div class="calendario-cabecalho">
+          <h2>Data e horário</h2>
+
+          <p class="descricao">Escolha uma data para consultar os horários disponíveis.</p>
+        </div>
+
+        <!-- 4. Data -->
+        <div class="campo">
+          <label for="data-agendamento">Data do agendamento</label>
+
+          <input
+            type="date"
+            id="data-agendamento"
+            name="data"
+            form="form-agendamento"
+            required
+          />
+
+          <p id="mensagem-data" class="mensagem-horarios" role="status">
+            Selecione o pet, o serviço e o profissional para continuar.
+          </p>
+        </div>
+
+        <!-- 5. Tabela de horários -->
+        <div class="area-horarios">
+          <h3>Horários disponíveis</h3>
+
+          <p id="mensagem-horarios" class="mensagem-horarios" role="status">
+            Os horários serão exibidos após a escolha da data.
+          </p>
+
+          <div class="tabela-horarios-container">
+            <table class="tabela-horarios">
+              <thead>
+                <tr>
+                  <th scope="col">Horário</th>
+                  <th scope="col">Disponibilidade</th>
+                  <th scope="col">Ação</th>
+                </tr>
+              </thead>
+
+              <tbody id="lista-horarios">
+                <tr>
+                  <td colspan="3">Selecione os dados do agendamento para consultar os horários.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resumo -->
+      <section class="card-confirmacao">
+        <h2>Resumo do agendamento</h2>
+
+        <div class="resumo-agendamento">
+          <p>
+            <strong>Pet:</strong>
+            <span id="resumo-pet">Não selecionado</span>
+          </p>
+
+          <p>
+            <strong>Serviço:</strong>
+            <span id="resumo-servico">Não selecionado</span>
+          </p>
+
+          <p>
+            <strong>Profissional:</strong>
+            <span id="resumo-profissional">Não selecionado</span>
+          </p>
+
+          <p>
+            <strong>Data:</strong>
+            <span id="resumo-data">Não selecionada</span>
+          </p>
+
+          <p>
+            <strong>Horário:</strong>
+            <span id="resumo-horario">Não selecionado</span>
+          </p>
+        </div>
+
+        <button type="button" id="btn-agendar" class="btn-confirm" disabled>
+          Confirmar agendamento
+        </button>
+      </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+      <p>© 2026 PetShow - Sistema de Agendamento</p>
+    </footer>
+
+    <script type="module" src="./assets/js/paginas/agendamento.js"></script>
+  </body>
+</html>

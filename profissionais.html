@@ -4,18 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>istração de Profissionais</title>
+    <title>Administração de Profissionais</title>
     <link rel="stylesheet" href="assets/css/paginas/profissionais.css" />
   </head>
 
   <body>
-    <header class="header">
+   <header class="header">
       <a href="index.html" class="logo">PetShow</a>
 
       <nav class="nav">
-        <a href="index.html">Página Inicial</a>
-        <a href="login.html">Login</a>
-        <a href="cadastro.html">Cadastro</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="perfil-usuario-admin.html">Meu Perfil</a>
+        <a href="agendamentos-admin.html">Meus Agendamentos</a>
+        <a href="especialidades.html">Especialidades</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="profissionais.html">Profissionais</a>
+        <a href="#">Sair</a>
       </nav>
     </header>
 
@@ -23,35 +27,33 @@
       <section class="card-cadastro">
         <h1>Cadastro de Profissional</h1>
 
-        <form class="form-cadastro">
+        <form id="form-cadastro" class="form-cadastro">
           <div class="campo">
             <label for="usuario">Usuário</label>
 
-            <select id="usuario" required>
+            <select id="usuario" name="id_usuario" required>
               <option value="">Selecione o usuário</option>
             </select>
           </div>
 
           <div class="campo">
-            <label for="especialidade">Especialidade</label>
+            <label>Especialidades</label>
 
-            <select id="especialidade" required>
-              <option value="">Selecione a especialidade</option>
-            </select>
+            <div id="lista-especialidades" class="lista-especialidades">
+              <p>Carregando especialidades...</p>
+            </div>
           </div>
 
           <div class="campo">
             <label for="status">Status</label>
 
-            <select id="status" required>
+            <select id="status" name="status" required>
               <option value="ATIVO">Ativo</option>
               <option value="INATIVO">Inativo</option>
             </select>
           </div>
 
-          <button type="submit" class="btn-confirm">
-            Cadastrar
-          </button>
+          <button type="submit" class="btn-confirm">Cadastrar</button>
         </form>
       </section>
 
@@ -64,14 +66,14 @@
               <tr>
                 <th>ID</th>
                 <th>Usuário</th>
-                <th>Especialidade</th>
+                <th>E-mail</th>
+                <th>Especialidades</th>
                 <th>Status</th>
                 <th>Ações</th>
               </tr>
             </thead>
 
-            <tbody id="tabela-profissionais">
-            </tbody>
+            <tbody id="tabela-profissionais"></tbody>
           </table>
         </div>
       </section>
@@ -87,40 +89,32 @@
           <div class="campo">
             <label for="editar-usuario">Usuário</label>
 
-            <select id="editar-usuario" required>
+            <select id="editar-usuario" name="id_usuario" required>
               <option value="">Selecione o usuário</option>
             </select>
           </div>
 
           <div class="campo">
-            <label for="editar-especialidade">Especialidade</label>
+            <label>Especialidades</label>
 
-            <select id="editar-especialidade" required>
-              <option value="">Selecione a especialidade</option>
-            </select>
+            <div id="editar-lista-especialidades" class="lista-especialidades">
+              <p>Carregando especialidades...</p>
+            </div>
           </div>
 
           <div class="campo">
             <label for="editar-status">Status</label>
 
-            <select id="editar-status" required>
+            <select id="editar-status" name="status" required>
               <option value="ATIVO">Ativo</option>
               <option value="INATIVO">Inativo</option>
             </select>
           </div>
 
           <div class="modal-acoes">
-            <button type="submit" class="btn-confirm">
-              Salvar
-            </button>
+            <button type="submit" class="btn-confirm">Salvar</button>
 
-            <button
-              type="button"
-              class="btn-cancelar"
-              id="btn-cancelar"
-            >
-              Cancelar
-            </button>
+            <button type="button" class="btn-cancelar" id="btn-cancelar">Cancelar</button>
           </div>
         </form>
       </div>
@@ -130,9 +124,6 @@
       <p>© 2026 PetShow - Sistema de Agendamento</p>
     </footer>
 
-    <script
-      type="module"
-      src="./assets/js/paginas/profissionais.js"
-    ></script>
+    <script type="module" src="./assets/js/paginas/profissionais.js"></script>
   </body>
 </html>

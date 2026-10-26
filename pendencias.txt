@@ -1,16 +1,16 @@
 cliente:
 
-cadstro x
-login x
-perfil usuario x
-agendar serviços
-agenda (selecionando profissional e serviço para mostrar disponibilidade)
+cadastro de pet
+agendamento
 
 
+mudança no backend:
 
+- adicionar id_especialidade nos serviços. x
+- alterar banco de dados, backend e frontend. x
 
-admin :
+fazendo isso, os serviços que um profissional presta será devidamente carregado. x
 
-serviços x
-especialidades x
-profissionais 
+- Carregar pets do usuário
+- Carregar agenda do profissional
+- Alterar o calendário de acordo com a agenda do profissional.

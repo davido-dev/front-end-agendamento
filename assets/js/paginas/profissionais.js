@@ -1,50 +1,48 @@
-const form = document.querySelector('form');
+const apiUrl = 'http://localhost:3000/api';
 
+const formCadastro = document.querySelector('#form-cadastro');
 const usuario = document.querySelector('#usuario');
-const especialidade = document.querySelector('#especialidade');
 const status = document.querySelector('#status');
 
+const listaEspecialidades = document.querySelector('#lista-especialidades');
 const tabelaProfissionais = document.querySelector('#tabela-profissionais');
 
 const modalEdicao = document.querySelector('#modal-edicao');
 const formEdicao = document.querySelector('#form-edicao');
 const btnCancelar = document.querySelector('#btn-cancelar');
 
+const editarId = document.querySelector('#editar-id');
 const editarUsuario = document.querySelector('#editar-usuario');
-const editarEspecialidade = document.querySelector('#editar-especialidade');
 const editarStatus = document.querySelector('#editar-status');
+const editarListaEspecialidades = document.querySelector('#editar-lista-especialidades');
 
+// Carregar usuários disponíveis para seleção
 async function carregarUsuarios() {
   try {
-    const resposta = await fetch('http://localhost:3000/api/profissionais');
+    const resposta = await fetch(`${apiUrl}/usuarios`);
 
     if (!resposta.ok) {
       throw new Error('Erro ao buscar usuários.');
     }
 
-    const profissionais = await resposta.json();
+    const usuarios = await resposta.json();
 
-    usuario.innerHTML = `
-      <option value="">Selecione o usuário</option>
-    `;
+    const profissionais = usuarios.filter((usuarioItem) => usuarioItem.tipo === 'PROFISSIONAL');
 
-    editarUsuario.innerHTML = `
-      <option value="">Selecione o usuário</option>
-    `;
+    usuario.innerHTML = '<option value="">Selecione o profissional</option>';
+    editarUsuario.innerHTML = '<option value="">Selecione o profissional</option>';
 
-    profissionais.forEach(function (profissional) {
+    profissionais.forEach((usuarioItem) => {
       const option = document.createElement('option');
 
-      option.value = profissional.Usuario.id_usuario;
-      option.textContent = profissional.Usuario.nome;
-
+      option.value = usuarioItem.id_usuario;
+      option.textContent = usuarioItem.nome;
       usuario.appendChild(option);
 
       const optionEdicao = document.createElement('option');
 
-      optionEdicao.value = profissional.Usuario.id_usuario;
-      optionEdicao.textContent = profissional.Usuario.nome;
-
+      optionEdicao.value = usuarioItem.id_usuario;
+      optionEdicao.textContent = usuarioItem.nome;
       editarUsuario.appendChild(optionEdicao);
     });
   } catch (erro) {
@@ -53,9 +51,38 @@ async function carregarUsuarios() {
   }
 }
 
+// Criar as checkboxes de especialidades
+function criarCheckboxes(container, especialidades, selecionadas = []) {
+  container.innerHTML = '';
+
+  if (especialidades.length === 0) {
+    container.innerHTML = '<p>Nenhuma especialidade cadastrada.</p>';
+    return;
+  }
+
+  especialidades.forEach((especialidade) => {
+    const label = document.createElement('label');
+    const checkbox = document.createElement('input');
+
+    checkbox.type = 'checkbox';
+    checkbox.name = 'id_especialidades';
+    checkbox.value = especialidade.id_especialidade;
+
+    checkbox.checked = selecionadas.some(
+      (id) => Number(id) === Number(especialidade.id_especialidade),
+    );
+
+    label.appendChild(checkbox);
+    label.appendChild(document.createTextNode(especialidade.nome));
+
+    container.appendChild(label);
+  });
+}
+
+// Carregar todas as especialidades
 async function carregarEspecialidades() {
   try {
-    const resposta = await fetch('http://localhost:3000/api/especialidades');
+    const resposta = await fetch(`${apiUrl}/especialidades`);
 
     if (!resposta.ok) {
       throw new Error('Erro ao buscar especialidades.');
@@ -63,38 +90,25 @@ async function carregarEspecialidades() {
 
     const especialidades = await resposta.json();
 
-    especialidade.innerHTML = `
-      <option value="">Selecione a especialidade</option>
-    `;
-
-    editarEspecialidade.innerHTML = `
-      <option value="">Selecione a especialidade</option>
-    `;
-
-    especialidades.forEach(function (especialidadeItem) {
-      const option = document.createElement('option');
-
-      option.value = especialidadeItem.id_especialidade;
-      option.textContent = especialidadeItem.nome;
-
-      especialidade.appendChild(option);
-
-      const optionEdicao = document.createElement('option');
-
-      optionEdicao.value = especialidadeItem.id_especialidade;
-      optionEdicao.textContent = especialidadeItem.nome;
-
-      editarEspecialidade.appendChild(optionEdicao);
-    });
+    criarCheckboxes(listaEspecialidades, especialidades);
+    criarCheckboxes(editarListaEspecialidades, especialidades);
   } catch (erro) {
     console.error(erro);
     alert('Não foi possível carregar as especialidades.');
   }
 }
 
+// Obter IDs das especialidades selecionadas
+function obterEspecialidadesSelecionadas(container) {
+  return Array.from(container.querySelectorAll('input[type="checkbox"]:checked')).map((checkbox) =>
+    Number(checkbox.value),
+  );
+}
+
+// Listar profissionais cadastrados
 async function carregarProfissionais() {
   try {
-    const resposta = await fetch('http://localhost:3000/api/profissionais');
+    const resposta = await fetch(`${apiUrl}/profissionais`);
 
     if (!resposta.ok) {
       throw new Error('Erro ao buscar profissionais.');
@@ -104,29 +118,27 @@ async function carregarProfissionais() {
 
     tabelaProfissionais.innerHTML = '';
 
-    profissionais.forEach(function (profissional) {
+    profissionais.forEach((profissional) => {
       const linha = document.createElement('tr');
 
-      const nomeUsuario = profissional.Usuario.nome;
-      const nomeEspecialidade = profissional.Especialidade.nome;
+      const nomeUsuario = profissional.usuario?.nome || 'Não informado';
+      const emailUsuario = profissional.usuario?.email || 'Não informado';
+
+      const nomesEspecialidades = profissional.especialidades?.length
+        ? profissional.especialidades.map((especialidade) => especialidade.nome).join(', ')
+        : 'Nenhuma especialidade';
 
       linha.innerHTML = `
         <td>${profissional.id_profissional}</td>
-
         <td>${nomeUsuario}</td>
-
-        <td>${nomeEspecialidade}</td>
-
+        <td>${emailUsuario}</td>
+        <td>${nomesEspecialidades}</td>
         <td>${profissional.status}</td>
-
         <td>
           <button
             type="button"
             class="btn-editar"
             data-id="${profissional.id_profissional}"
-            data-usuario="${profissional.id_usuario}"
-            data-especialidade="${profissional.id_especialidade}"
-            data-status="${profissional.status}"
           >
             Editar
           </button>
@@ -149,21 +161,27 @@ async function carregarProfissionais() {
   }
 }
 
-form.addEventListener('submit', async function (event) {
+// Cadastrar profissional
+formCadastro.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const idUsuario = usuario.value;
-  const idEspecialidade = especialidade.value;
+  const idUsuario = Number(usuario.value);
+  const idEspecialidades = obterEspecialidadesSelecionadas(listaEspecialidades);
   const statusProfissional = status.value;
+
+  if (!idUsuario) {
+    alert('Selecione um usuário.');
+    return;
+  }
 
   const profissional = {
     id_usuario: idUsuario,
-    id_especialidade: idEspecialidade,
+    id_especialidades: idEspecialidades,
     status: statusProfissional,
   };
 
   try {
-    const resposta = await fetch('http://localhost:3000/api/profissionais', {
+    const resposta = await fetch(`${apiUrl}/profissionais`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -171,96 +189,127 @@ form.addEventListener('submit', async function (event) {
       body: JSON.stringify(profissional),
     });
 
-    console.log(resposta)
-
     if (!resposta.ok) {
-      throw new Error('Erro ao cadastrar profissional.');
+      const erro = await resposta.json();
+      throw new Error(erro.erro || 'Erro ao cadastrar profissional.');
     }
 
     alert('Profissional cadastrado com sucesso!');
 
-    form.reset();
+    formCadastro.reset();
 
-    carregarProfissionais();
+    await carregarProfissionais();
   } catch (erro) {
     console.error(erro);
-    alert('Não foi possível cadastrar o profissional.');
+    alert(erro.message || 'Não foi possível cadastrar o profissional.');
   }
 });
 
-tabelaProfissionais.addEventListener('click', function (event) {
+// Ações da tabela
+tabelaProfissionais.addEventListener('click', (event) => {
   const botao = event.target;
 
   if (botao.classList.contains('btn-editar')) {
-    editarProfissional(botao);
+    editarProfissional(botao.dataset.id);
   }
 
   if (botao.classList.contains('btn-excluir')) {
-    excluirProfissional(botao);
+    excluirProfissional(botao.dataset.id);
   }
 });
 
-function editarProfissional(botao) {
-  const idProfissional = botao.dataset.id;
-  const idUsuario = botao.dataset.usuario;
-  const idEspecialidade = botao.dataset.especialidade;
-  const statusProfissional = botao.dataset.status;
+// Buscar dados e abrir modal de edição
+async function editarProfissional(idProfissional) {
+  try {
+    const resposta = await fetch(`${apiUrl}/profissionais/${idProfissional}`);
 
-  document.querySelector('#editar-id').value = idProfissional;
-
-  editarUsuario.value = idUsuario;
-  editarEspecialidade.value = idEspecialidade;
-  editarStatus.value = statusProfissional;
-
-  modalEdicao.style.display = 'flex';
-
-  formEdicao.onsubmit = async function (event) {
-    event.preventDefault();
-
-    const novoIdUsuario = editarUsuario.value;
-
-    const usuario = {
-      id_usuario: novoIdUsuario,
-    };
-
-    try {
-      const resposta = await fetch(`http://localhost:3000/api/usuarios/${idUsuario}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(usuario),
-      });
-
-      if (!resposta.ok) {
-        throw new Error('Erro ao atualizar usuário.');
-      }
-
-      alert('Profissional atualizado com sucesso!');
-
-      modalEdicao.style.display = 'none';
-
-      carregarProfissionais();
-    } catch (erro) {
-      console.error(erro);
-      alert('Não foi possível atualizar o usuário.');
+    if (!resposta.ok) {
+      throw new Error('Erro ao buscar profissional.');
     }
-  };
+
+    const profissional = await resposta.json();
+
+    editarId.value = profissional.id_profissional;
+
+    // O controller atual não permite alterar o usuário vinculado.
+    editarUsuario.value = profissional.id_usuario;
+    editarUsuario.disabled = true;
+
+    editarStatus.value = profissional.status;
+
+    const idsEspecialidades =
+      profissional.especialidades?.map((especialidade) => especialidade.id_especialidade) || [];
+
+    // Recria as checkboxes marcando as especialidades atuais.
+    const respostaEspecialidades = await fetch(`${apiUrl}/especialidades`);
+
+    if (!respostaEspecialidades.ok) {
+      throw new Error('Erro ao carregar especialidades para edição.');
+    }
+
+    const especialidades = await respostaEspecialidades.json();
+
+    criarCheckboxes(editarListaEspecialidades, especialidades, idsEspecialidades);
+
+    modalEdicao.style.display = 'flex';
+  } catch (erro) {
+    console.error(erro);
+    alert('Não foi possível carregar os dados para edição.');
+  }
 }
 
-btnCancelar.addEventListener('click', function () {
-  modalEdicao.style.display = 'none';
-});
+// Atualizar status e especialidades
+formEdicao.addEventListener('submit', async (event) => {
+  event.preventDefault();
 
-modalEdicao.addEventListener('click', function (event) {
-  if (event.target === modalEdicao) {
-    modalEdicao.style.display = 'none';
+  const idProfissional = editarId.value;
+
+  const profissionalAtualizado = {
+    status: editarStatus.value,
+    id_especialidades: obterEspecialidadesSelecionadas(editarListaEspecialidades),
+  };
+
+  try {
+    const resposta = await fetch(`${apiUrl}/profissionais/${idProfissional}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(profissionalAtualizado),
+    });
+
+    if (!resposta.ok) {
+      const erro = await resposta.json();
+      throw new Error(erro.erro || 'Erro ao atualizar profissional.');
+    }
+
+    alert('Profissional atualizado com sucesso!');
+
+    fecharModal();
+    await carregarProfissionais();
+  } catch (erro) {
+    console.error(erro);
+    alert(erro.message || 'Não foi possível atualizar o profissional.');
   }
 });
 
-async function excluirProfissional(botao) {
-  const idProfissional = botao.dataset.id;
+// Fechar modal
+function fecharModal() {
+  modalEdicao.style.display = 'none';
+  editarUsuario.disabled = false;
+  formEdicao.reset();
+}
 
+btnCancelar.addEventListener('click', fecharModal);
+
+modalEdicao.addEventListener('click', (event) => {
+  if (event.target === modalEdicao) {
+    fecharModal();
+  }
+});
+
+// Excluir profissional
+async function excluirProfissional(idProfissional) {
   const confirmar = confirm('Deseja realmente excluir este profissional?');
 
   if (!confirmar) {
@@ -268,23 +317,29 @@ async function excluirProfissional(botao) {
   }
 
   try {
-    const resposta = await fetch(`http://localhost:3000/api/profissionais/${idProfissional}`, {
+    const resposta = await fetch(`${apiUrl}/profissionais/${idProfissional}`, {
       method: 'DELETE',
     });
 
     if (!resposta.ok) {
-      throw new Error('Erro ao excluir profissional.');
+      const erro = await resposta.json();
+      throw new Error(erro.erro || 'Erro ao excluir profissional.');
     }
 
     alert('Profissional excluído com sucesso!');
 
-    carregarProfissionais();
+    await carregarProfissionais();
   } catch (erro) {
     console.error(erro);
-    alert('Não foi possível excluir o profissional.');
+    alert(erro.message || 'Não foi possível excluir o profissional.');
   }
 }
 
-carregarUsuarios();
-carregarEspecialidades();
-carregarProfissionais();
+// Inicialização da página
+async function inicializarPagina() {
+  await carregarUsuarios();
+  await carregarEspecialidades();
+  await carregarProfissionais();
+}
+
+inicializarPagina();

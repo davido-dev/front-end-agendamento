@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Agendamentos - PetShow</title>
+
+    <link rel="stylesheet" href="assets/css/paginas/agendamento-admin.css" />
+  </head>
+
+  <body>
+    <!-- Cabeçalho -->
+    <header class="header">
+      <a href="index.html" class="logo">PetShow</a>
+
+      <nav class="nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="perfil-usuario-admin.html">Meu Perfil</a>
+        <a href="agendamentos-admin.html">Meus Agendamentos</a>
+        <a href="especialidades.html">Especialidades</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="profissionais.html">Profissionais</a>
+        <a href="#">Sair</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Lista de agendamentos -->
+      <section class="card-agendamentos">
+        <h1>Agendamentos</h1>
+
+        <p class="descricao">
+          Selecione um profissional para consultar e atualizar seus agendamentos.
+        </p>
+
+        <!-- Filtros -->
+        <div class="filtros-agendamentos">
+          <div class="campo">
+            <label for="filtro-profissional">Profissional</label>
+
+            <select id="filtro-profissional" name="profissional" required>
+              <option value="">Selecione um profissional</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="filtro-data">Filtrar por data</label>
+            <input type="date" id="filtro-data" name="data" />
+          </div>
+
+          <div class="campo">
+            <label for="filtro-status">Filtrar por status</label>
+
+            <select id="filtro-status" name="status" disabled>
+              <option value="">Todos os status</option>
+              <option value="AGENDADO">Agendado</option>
+              <option value="CANCELADO">Cancelado</option>
+              <option value="CONCLUÍDO">Concluído</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tabela de agendamentos -->
+        <div class="tabela-container">
+          <table id="tabela-agendamentos" hidden>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Serviço</th>
+                <th>Cliente</th>
+                <th>Pet</th>
+                <th>Valor</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody id="lista-agendamentos">
+              <!-- Os agendamentos serão renderizados pelo JavaScript -->
+            </tbody>
+          </table>
+
+          <p id="mensagem-agendamentos" class="mensagem-agendamentos">
+            Selecione um profissional para consultar os agendamentos.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal de edição do agendamento -->
+    <div
+      id="modal-edicao"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="titulo-modal"
+      hidden
+    >
+      <div class="modal-conteudo">
+        <div class="modal-cabecalho">
+          <h2 id="titulo-modal">Atualizar Agendamento</h2>
+
+          <button type="button" id="btn-fechar-modal" class="btn-fechar" aria-label="Fechar modal">
+            &times;
+          </button>
+        </div>
+
+        <!-- Informações do agendamento selecionado -->
+        <div class="dados-agendamento">
+          <p>
+            <strong>Data:</strong>
+            <span id="modal-data">-</span>
+          </p>
+
+          <p>
+            <strong>Horário:</strong>
+            <span id="modal-horario">-</span>
+          </p>
+
+          <p>
+            <strong>Serviço:</strong>
+            <span id="modal-servico">-</span>
+          </p>
+
+          <p>
+            <strong>Cliente:</strong>
+            <span id="modal-cliente">-</span>
+          </p>
+
+          <p>
+            <strong>Pet:</strong>
+            <span id="modal-pet">-</span>
+          </p>
+
+          <p>
+            <strong>Valor:</strong>
+            <span id="modal-valor">-</span>
+          </p>
+
+          <p>
+            <strong>Observações:</strong>
+            <span id="modal-observacoes">-</span>
+          </p>
+        </div>
+
+        <!-- Formulário para alterar somente o status -->
+        <form id="form-edicao">
+          <input type="hidden" id="id-agendamento" name="id_agendamento" />
+
+          <div class="campo">
+            <label for="status-agendamento">Status do agendamento</label>
+
+            <select id="status-agendamento" name="status" required>
+              <option value="AGENDADO">Agendado</option>
+              <option value="CANCELADO">Cancelado</option>
+              <option value="CONCLUÍDO">Concluído</option>
+            </select>
+          </div>
+
+          <div class="modal-acoes">
+            <button type="button" id="btn-cancelar" class="btn-cancelar">Fechar</button>
+
+            <button type="submit" id="btn-salvar" class="btn-confirm">Salvar Alterações</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+      <p>© 2026 PetShow - Sistema de Agendamento</p>
+    </footer>
+
+    <script type="module" src="assets/js/paginas/agendamento-admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Pagamento - PetShow</title>
+
+    <link rel="stylesheet" href="assets/css/paginas/pagamento.css" />
+  </head>
+
+  <body>
+    <!-- Cabeçalho -->
+    <header class="header">
+      <a href="index.html" class="logo">PetShow</a>
+
+      <nav class="nav">
+        <a href="index.html">Página Inicial</a>
+        <a href="perfil-usuario.html">Meu Perfil</a>
+        <a href="agendamento.html">Agendamento</a>
+        <a href="login.html">Sair</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="card-pagamento">
+        <h1>Pagamento</h1>
+
+        <p class="descricao">Confira os dados do seu agendamento e finalize o pagamento.</p>
+
+        <!-- Mensagem de carregamento / erro -->
+        <p id="mensagem-pagamento" class="mensagem-pagamento" role="status" aria-live="polite">
+          Carregando dados do agendamento...
+        </p>
+
+        <!-- Resumo do agendamento -->
+        <div class="resumo-agendamento" id="resumo-agendamento" hidden>
+          <p>
+            <strong>Serviço:</strong>
+            <span id="resumo-servico">-</span>
+          </p>
+
+          <p>
+            <strong>Pet:</strong>
+            <span id="resumo-pet">-</span>
+          </p>
+
+          <p>
+            <strong>Profissional:</strong>
+            <span id="resumo-profissional">-</span>
+          </p>
+
+          <p>
+            <strong>Data:</strong>
+            <span id="resumo-data">-</span>
+          </p>
+
+          <p>
+            <strong>Horário:</strong>
+            <span id="resumo-horario">-</span>
+          </p>
+
+          <p class="resumo-valor">
+            <strong>Valor:</strong>
+            <span id="resumo-valor">-</span>
+          </p>
+        </div>
+
+        <!-- Formulário de pagamento -->
+        <form id="form-pagamento" hidden>
+          <div class="campo">
+            <label>Forma de pagamento</label>
+
+            <div class="opcoes-pagamento">
+              <label class="opcao-pagamento">
+                <input type="radio" name="forma_pagamento" value="PIX" required />
+                PIX
+              </label>
+
+              <label class="opcao-pagamento">
+                <input type="radio" name="forma_pagamento" value="CARTAO" required />
+                Cartão
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" id="btn-pagar" class="btn-confirm">Confirmar pagamento</button>
+        </form>
+
+        <!-- Confirmação de pagamento -->
+        <div id="confirmacao-pagamento" class="confirmacao-pagamento" hidden>
+          <p>Pagamento confirmado com sucesso!</p>
+
+          <a href="index.html" class="btn-confirm btn-link">Voltar para a página inicial</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+      <p>© 2026 PetShow - Sistema de Agendamento</p>
+    </footer>
+
+    <script type="module" src="./assets/js/paginas/pagamento.js"></script>
+  </body>
+</html>

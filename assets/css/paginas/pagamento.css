@@ -1,0 +1,186 @@
+@import url('../global/reset.css');
+@import url('../componentes/botoes.css');
+@import url('../componentes/cabecalho.css');
+@import url('../componentes/footer.css');
+
+/* Geral */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  margin: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+/* Card principal */
+.card-pagamento {
+  padding: 25px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.card-pagamento h1 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.descricao {
+  margin-bottom: 22px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Mensagem de carregamento / erro */
+.mensagem-pagamento {
+  padding: 20px 0;
+  color: #666;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Resumo do agendamento */
+.resumo-agendamento {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.resumo-agendamento p {
+  font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.resumo-agendamento strong {
+  color: #333;
+}
+
+.resumo-valor {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+/* Formulário de pagamento */
+#form-pagamento {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.campo label {
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.opcoes-pagamento {
+  display: flex;
+  gap: 15px;
+}
+
+.opcao-pagamento {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: normal;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.opcao-pagamento:has(input:checked) {
+  border-color: #007bff;
+  background: #eaf3ff;
+}
+
+/* Botão de confirmação */
+.btn-confirm {
+  width: 100%;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-confirm:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.btn-confirm:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.btn-link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+/* Confirmação de pagamento */
+.confirmacao-pagamento {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.confirmacao-pagamento p {
+  font-size: 18px;
+  color: #198754;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Acessibilidade */
+button:focus-visible,
+.opcao-pagamento:focus-within {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Rodapé */
+.footer {
+  margin-top: 40px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    width: 92%;
+    margin: 20px auto;
+  }
+
+  .card-pagamento {
+    padding: 20px 15px;
+  }
+
+  .card-pagamento h1 {
+    font-size: 22px;
+  }
+
+  .opcoes-pagamento {
+    flex-direction: column;
+  }
+}

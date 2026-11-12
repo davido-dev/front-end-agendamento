@@ -1,11 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>PÁGINA INICIAL</h1>
-</body>
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Início - PetShow</title>
+
+    <link rel="stylesheet" href="assets/css/paginas/index.css" />
+  </head>
+
+  <body>
+    <!-- Cabeçalho -->
+    <header class="header">
+      <a href="index.html" class="logo">PetShow</a>
+
+      <nav class="nav">
+        <a href="index.html">Página Inicial</a>
+        <a href="perfil-usuario.html">Meu Perfil</a>
+        <a href="agendamento.html">Agendamento</a>
+        <a href="login.html">Sair</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Saudação e ação principal -->
+      <section class="card-boas-vindas">
+        <h1 id="saudacao-usuario">Olá!</h1>
+
+        <p class="descricao">O que vamos fazer pelo seu pet hoje?</p>
+
+        <a href="agendamentos.html" id="btn-agendar" class="btn-confirm btn-agendar">
+          Agendar novo serviço
+        </a>
+      </section>
+
+      <!-- Pets cadastrados -->
+      <section class="card-pets">
+        <div class="cabecalho-secao">
+          <h2>Seus pets</h2>
+          <a href="cadastro-pet.html" class="link-secao">+ Cadastrar pet</a>
+        </div>
+
+        <p id="mensagem-pets" class="mensagem-secao" role="status" aria-live="polite">
+          Carregando pets...
+        </p>
+
+        <div id="lista-pets" class="grid-pets" hidden></div>
+      </section>
+
+      <!-- Próximos agendamentos -->
+      <section class="card-agendamentos">
+        <h2>Próximos agendamentos</h2>
+
+        <p id="mensagem-proximos" class="mensagem-secao" role="status" aria-live="polite">
+          Carregando agendamentos...
+        </p>
+
+        <ul id="lista-proximos" class="lista-agendamentos" hidden></ul>
+      </section>
+
+      <!-- Últimos agendamentos (histórico recente) -->
+      <section class="card-agendamentos">
+        <h2>Agendamentos recentes</h2>
+
+        <p id="mensagem-recentes" class="mensagem-secao" role="status" aria-live="polite">
+          Carregando histórico...
+        </p>
+
+        <ul id="lista-recentes" class="lista-agendamentos" hidden></ul>
+      </section>
+
+      <!-- Vitrine de serviços -->
+      <section class="card-servicos">
+        <h2>Nossos serviços</h2>
+
+        <p id="mensagem-servicos" class="mensagem-secao" role="status" aria-live="polite">
+          Carregando serviços...
+        </p>
+
+        <div id="lista-servicos" class="grid-servicos" hidden></div>
+      </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+      <p>© 2026 PetShow - Sistema de Agendamento</p>
+    </footer>
+
+    <script type="module" src="./assets/js/paginas/index.js"></script>
+  </body>
 </html>

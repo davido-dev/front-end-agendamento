@@ -1,0 +1,274 @@
+@import url('../global/reset.css');
+@import url('../componentes/botoes.css');
+@import url('../componentes/cabecalho.css');
+@import url('../componentes/footer.css');
+
+/* Geral */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f5f5;
+  color: #333;
+  margin: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Cartões */
+.card-boas-vindas,
+.card-pets,
+.card-agendamentos,
+.card-servicos {
+  padding: 25px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.card-boas-vindas h1,
+.card-pets h2,
+.card-agendamentos h2,
+.card-servicos h2 {
+  font-size: 22px;
+  color: #333;
+}
+
+.descricao {
+  margin-top: 6px;
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Boas-vindas */
+.card-boas-vindas h1 {
+  margin-bottom: 6px;
+}
+
+.btn-agendar {
+  display: inline-block;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-agendar:hover {
+  background: #0056b3;
+}
+
+/* Cabeçalho de seção (título + ação) */
+.cabecalho-secao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.cabecalho-secao h2 {
+  margin: 0;
+}
+
+.link-secao {
+  color: #007bff;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.link-secao:hover {
+  text-decoration: underline;
+}
+
+/* Mensagens de carregamento / vazio */
+.mensagem-secao {
+  padding: 15px 0;
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Seção de pets */
+.card-pets h2 {
+  margin-bottom: 0;
+}
+
+.grid-pets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.pet-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.pet-card .pet-nome {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.pet-card .pet-info {
+  font-size: 13px;
+  color: #666;
+}
+
+/* Lista de agendamentos (próximos e recentes) */
+.lista-agendamentos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item-agendamento {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+  flex-wrap: wrap;
+}
+
+.item-agendamento .info-principal {
+  font-size: 14px;
+}
+
+.item-agendamento .info-principal strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.item-agendamento .info-secundaria {
+  color: #666;
+}
+
+/* Status (mesmo padrão da tela administrativa) */
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.status-agendado {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-cancelado {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status-concluido {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* Vitrine de serviços */
+.grid-servicos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.servico-card {
+  padding: 18px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.servico-card .servico-nome {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.servico-card .servico-valor {
+  font-size: 15px;
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* Acessibilidade */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Rodapé */
+.footer {
+  margin-top: 40px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    width: 92%;
+    margin: 20px auto;
+    gap: 18px;
+  }
+
+  .card-boas-vindas,
+  .card-pets,
+  .card-agendamentos,
+  .card-servicos {
+    padding: 20px 15px;
+  }
+
+  .card-boas-vindas h1 {
+    font-size: 20px;
+  }
+
+  .card-pets h2,
+  .card-agendamentos h2,
+  .card-servicos h2 {
+    font-size: 19px;
+  }
+
+  .btn-agendar {
+    width: 100%;
+  }
+
+  .grid-pets,
+  .grid-servicos {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .item-agendamento {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

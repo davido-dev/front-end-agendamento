@@ -16,8 +16,9 @@
 
       <nav class="nav">
         <a href="index.html">Página Inicial</a>
-        <a href="login.html">Login</a>
-        <a href="cadastro.html">Cadastro</a>
+        <a href="perfil-usuario.html">Meu Perfil</a>
+        <a href="agendamento.html">Agendamento</a>
+        <a href="login.html">Sair</a>
       </nav>
     </header>
 
@@ -31,7 +32,7 @@
         </p>
 
         <form id="form-agendamento">
-          <!-- 1. Pet -->
+          <!-- Pet -->
           <div class="campo">
             <label for="pet">Pet</label>
 
@@ -40,7 +41,7 @@
             </select>
           </div>
 
-          <!-- 2. Serviço -->
+          <!-- Serviço -->
           <div class="campo">
             <label for="servico">Serviço</label>
 
@@ -49,14 +50,17 @@
             </select>
           </div>
 
-          <!-- 3. Profissional -->
+          <!-- Profissional -->
           <div class="campo">
             <label for="profissional">Profissional</label>
 
-            <select id="profissional" name="id_profissional" required>
+            <select id="profissional" name="id_profissional" required disabled>
               <option value="">Selecione o profissional</option>
             </select>
           </div>
+
+          <!-- Horário selecionado -->
+          <input type="hidden" id="hora_inicio" name="hora_inicio" required />
 
           <!-- Observações -->
           <div class="campo">
@@ -72,7 +76,7 @@
         </form>
       </section>
 
-      <!-- Escolha da data e dos horários -->
+      <!-- Data e horários -->
       <section class="card-calendario">
         <div class="calendario-cabecalho">
           <h2>Data e horário</h2>
@@ -80,7 +84,7 @@
           <p class="descricao">Escolha uma data para consultar os horários disponíveis.</p>
         </div>
 
-        <!-- 4. Data -->
+        <!-- Data -->
         <div class="campo">
           <label for="data-agendamento">Data do agendamento</label>
 
@@ -89,20 +93,21 @@
             id="data-agendamento"
             name="data"
             form="form-agendamento"
+            min="2026-10-27"
             required
           />
 
           <p id="mensagem-data" class="mensagem-horarios" role="status">
-            Selecione o pet, o serviço e o profissional para continuar.
+            Selecione o pet, o serviço, o profissional e a data.
           </p>
         </div>
 
-        <!-- 5. Tabela de horários -->
+        <!-- Tabela de horários -->
         <div class="area-horarios">
           <h3>Horários disponíveis</h3>
 
-          <p id="mensagem-horarios" class="mensagem-horarios" role="status">
-            Os horários serão exibidos após a escolha da data.
+          <p id="mensagem-horarios" class="mensagem-horarios" role="status" aria-live="polite">
+            Os horários serão exibidos após a escolha dos dados.
           </p>
 
           <div class="tabela-horarios-container">
@@ -156,7 +161,7 @@
           </p>
         </div>
 
-        <button type="button" id="btn-agendar" class="btn-confirm" disabled>
+        <button type="submit" id="btn-agendar" class="btn-confirm" form="form-agendamento" disabled>
           Confirmar agendamento
         </button>
       </section>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/paginas/perfil-usuario.css">
+    <link rel="stylesheet" href="./assets/css/paginas/perfil-usuario.css" />
     <title>Meu Perfil</title>
   </head>
 
@@ -14,8 +14,10 @@
       <nav class="nav">
         <a href="index.html">Página Inicial</a>
         <a href="perfil-usuario.html">Meu Perfil</a>
-        <a href="agendamento.html">Agendamento</a>
-        <a href="login.html">Sair</a>
+        <a href="pets.html">Meus Pets</a>
+        <a href="agendamentos-usuario.html">Meus Agendamentos</a>
+        <a href="agendamentos.html">Agendar Serviço</a>
+        <a id="btn-sair">Sair</a>
       </nav>
     </header>
 
@@ -26,23 +28,12 @@
         <form>
           <div class="campo">
             <label for="nome">Nome</label>
-            <input
-              type="text"
-              id="nome"
-              placeholder="Digite seu nome"
-              maxlength="100"
-              required
-            />
+            <input type="text" id="nome" placeholder="Digite seu nome" maxlength="100" required />
           </div>
 
           <div class="campo">
             <label for="cpf">CPF</label>
-            <input
-              type="text"
-              id="cpf"
-              placeholder="CPF"
-              disabled
-            />
+            <input type="text" id="cpf" placeholder="CPF" disabled />
           </div>
 
           <div class="campo">
@@ -58,36 +49,20 @@
 
           <div class="campo">
             <label for="telefone">Telefone</label>
-            <input
-              type="tel"
-              id="telefone"
-              placeholder="Digite seu telefone"
-              maxlength="20"
-            />
+            <input type="tel" id="telefone" placeholder="Digite seu telefone" maxlength="20" />
           </div>
 
           <div class="campo">
             <label for="senha">Nova senha</label>
-            <input
-              type="password"
-              id="senha"
-              placeholder="Digite uma nova senha"
-            />
+            <input type="password" id="senha" placeholder="Digite uma nova senha" />
           </div>
 
           <div class="campo">
             <label for="confirmeSenha">Confirmar nova senha</label>
-            <input
-              type="password"
-              id="confirmeSenha"
-              placeholder="Confirme a nova senha"
-            />
+            <input type="password" id="confirmeSenha" placeholder="Confirme a nova senha" />
           </div>
 
-          <button class="btn-confirm" type="submit">
-            Atualizar dados
-          </button>
-
+          <button class="btn-confirm" type="submit">Atualizar dados</button>
         </form>
       </section>
     </main>
@@ -97,5 +72,6 @@
     </footer>
 
     <script type="module" src="./assets/js/paginas/perfil-usuario.js"></script>
+    <script type="module" src="assets/js/componentes/logout.js"></script>
   </body>
 </html>

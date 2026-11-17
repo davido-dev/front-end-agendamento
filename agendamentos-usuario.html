@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Meus Agendamentos - PetShow</title>
+
+    <link rel="stylesheet" href="assets/css/paginas/agendamentos-usuario.css" />
+  </head>
+
+  <body>
+    <!-- Cabeçalho -->
+    <header class="header">
+      <a href="index.html" class="logo">PetShow</a>
+
+      <nav class="nav">
+        <a href="index.html">Página Inicial</a>
+        <a href="perfil-usuario.html">Meu Perfil</a>
+        <a href="pets.html">Meus Pets</a>
+        <a href="agendamentos-usuario.html">Meus Agendamentos</a>
+        <a href="agendamentos.html">Agendar Serviço</a>
+        <a id="btn-sair">Sair</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- Lista de agendamentos -->
+      <section class="card-agendamentos">
+        <h1>Meus Agendamentos</h1>
+
+        <p class="descricao">Consulte seus agendamentos e cancele caso necessário.</p>
+
+        <!-- Filtros -->
+        <div class="filtros-agendamentos">
+          <div class="campo">
+            <label for="filtro-data">Filtrar por data</label>
+            <input type="date" id="filtro-data" name="data" />
+          </div>
+
+          <div class="campo">
+            <label for="filtro-status">Filtrar por status</label>
+
+            <select id="filtro-status" name="status">
+              <option value="">Todos os status</option>
+              <option value="AGENDADO">Agendado</option>
+              <option value="CANCELADO">Cancelado</option>
+              <option value="CONCLUÍDO">Concluído</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tabela de agendamentos -->
+        <div class="tabela-container">
+          <table id="tabela-agendamentos" hidden>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Serviço</th>
+                <th>Profissional</th>
+                <th>Pet</th>
+                <th>Valor</th>
+                <th>Status</th>
+                <th>Ação</th>
+              </tr>
+            </thead>
+
+            <tbody id="lista-agendamentos">
+              <!-- Os agendamentos serão renderizados pelo JavaScript -->
+            </tbody>
+          </table>
+
+          <p id="mensagem-agendamentos" class="mensagem-agendamentos">Carregando agendamentos...</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+      <p>© 2026 PetShow - Sistema de Agendamento</p>
+    </footer>
+
+    <script type="module" src="assets/js/paginas/agendamentos-usuario.js"></script>
+       <script type="module" src="assets/js/componentes/logout.js"></script>
+  </body>
+</html>

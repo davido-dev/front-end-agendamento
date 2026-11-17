@@ -27,7 +27,8 @@ form.addEventListener('submit', async function (event) {
       return;
     }
 
-    localStorage.setItem('usuario', JSON.stringify(dados.usuario))
+    localStorage.setItem('usuario', JSON.stringify(dados.usuario));
+    window.location.href = 'perfil-usuario.html';
 
     alert('Login realizado!');
   } catch (erro) {
